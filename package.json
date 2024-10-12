@@ -6,10 +6,15 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "prisma": "prisma",
+    "db:pull": "prisma db pull",
+    "db:generate": "prisma generate"
   },
   "dependencies": {
     "@clerk/nextjs": "^5.7.2",
+    "@prisma/client": "^5.20.0",
+    "bson": "^6.8.0",
     "eslint": "^9.12.0",
     "eslint-config-next": "^14.2.15",
     "formik": "^2.4.6",
@@ -23,10 +28,12 @@
     "yup": "^1.4.0"
   },
   "devDependencies": {
+    "@types/lodash": "^4.17.10",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "postcss": "^8",
+    "prisma": "^5.20.0",
     "sass": "^1.79.5",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"

@@ -3,14 +3,6 @@ import * as yup from "yup";
 import { isUndefined } from "lodash";
 
 import { isDevEnv } from "env/client";
-// import DeleteIcon from "@mui/icons-material/Delete";
-// import VisibilityIcon from "@mui/icons-material/Visibility";
-// import { isUndefined } from "lodash";
-// import { v4 as uuid } from "uuid";
-// import { ChangeEvent } from "react";
-
-// import supabase from "utils/supabase/client";
-// import Link from "next/link";
 
 type InputType =
   | "text"
@@ -161,7 +153,7 @@ export default function FormFactory({
 
                       if (currentValues.includes(currentKey)) {
                         currentValues = currentValues.filter(
-                          (value) => value !== currentKey
+                          (value) => value !== currentKey,
                         );
                       } else {
                         currentValues.push(currentKey);
@@ -508,7 +500,7 @@ export default function FormFactory({
   return (
     <div data-testid="formFactory" className="flex flex-col gap-2 mb-4">
       {inputConfigs.map(
-        (inputConfig) => inputConfig && getElement(inputConfig)
+        (inputConfig) => inputConfig && getElement(inputConfig),
       )}
 
       {isDevEnv() ? <pre>{JSON.stringify(formik.values, null, 2)}</pre> : null}

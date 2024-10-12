@@ -6,18 +6,18 @@ import DashboardPageLayout from "components/DashboardPageLayout";
 
 export const dynamic = "force-dynamic";
 
-export default function MyAppsPage() {
+export default function AppHomePage() {
   return (
     <DashboardPageLayout>
       <DashboardHeader title="Apps" subtitle="app home" />
 
       <section id="actions">
-        <Link href="/app/project/create">
-          <Button>Create new app</Button>
+        <Link href="/app">
+          <Button>Create new</Button>
         </Link>
       </section>
 
-      <h2>No projects found</h2>
+      <h2>No records found</h2>
     </DashboardPageLayout>
   );
 }

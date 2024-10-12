@@ -4,19 +4,19 @@ import Link from "next/link";
 const navbarMenu = [
   {
     href: "/app",
-    label: "Apps",
+    label: "Home",
   },
   {
-    href: "/app/settings",
-    label: "Settings",
+    href: "/app",
+    label: "Home 2",
   },
   {
-    href: "/",
-    label: "Account",
+    href: "/app",
+    label: "Home 3",
   },
   {
-    href: "/",
-    label: "Plans",
+    href: "/app",
+    label: "Home 4",
   },
 ];
 
