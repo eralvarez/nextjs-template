@@ -1,12 +1,12 @@
-db = db.getSiblingDB("cms_db");
+db = db.getSiblingDB("project_db");
 
 db.createUser({
-  user: "admin",
+  user: "user",
   pwd: "password",
   roles: [
     {
       role: "readWrite",
-      db: "cms_db",
+      db: "project_db",
     },
   ],
 });
