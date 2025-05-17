@@ -1,41 +1,30 @@
 {
   "name": "nextjs-template",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "prisma": "prisma",
-    "db:pull": "prisma db pull",
-    "db:generate": "prisma generate"
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
   },
   "dependencies": {
-    "@clerk/nextjs": "^5.7.2",
-    "@prisma/client": "^5.20.0",
-    "bson": "^6.8.0",
-    "eslint": "^9.12.0",
-    "eslint-config-next": "^14.2.15",
-    "formik": "^2.4.6",
-    "lodash": "^4.17.21",
-    "next": "14.2.15",
-    "react": "^18",
-    "react-dom": "^18",
-    "react-icons": "^5.3.0",
-    "react-query": "^3.39.3",
-    "uuid": "^10.0.0",
-    "yup": "^1.4.0"
+    "next": "15.3.2",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
   },
   "devDependencies": {
-    "@types/lodash": "^4.17.10",
+    "@eslint/eslintrc": "^3",
     "@types/node": "^20",
-    "@types/react": "^18",
-    "@types/react-dom": "^18",
-    "postcss": "^8",
-    "prisma": "^5.20.0",
-    "sass": "^1.79.5",
-    "tailwindcss": "^3.4.1",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "15.3.2",
+    "eslint-config-prettier": "^10.1.5",
+    "eslint-plugin-prettier": "^5.4.0",
+    "prettier": "^3.5.3",
     "typescript": "^5"
   }
 }
