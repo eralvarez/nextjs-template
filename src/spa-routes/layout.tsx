@@ -4,8 +4,8 @@ export default function Layout() {
   return (
     <div>
       <div>
-        <NavLink to="/page-one">Page One</NavLink>
-        <NavLink to="/page-two">Page Two</NavLink>
+        <NavLink to="/spa">Page One</NavLink>
+        <NavLink to="/spa/page-two">Page Two</NavLink>
       </div>
       <Outlet />
     </div>
