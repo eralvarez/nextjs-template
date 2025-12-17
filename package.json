@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "start:dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
@@ -11,6 +12,11 @@
     "format:check": "prettier --check ."
   },
   "dependencies": {
+    "@emotion/cache": "^11.14.0",
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.1",
+    "@mui/material": "^7.3.6",
+    "@mui/material-nextjs": "^7.3.6",
     "next": "16.0.10",
     "react": "19.2.1",
     "react-dom": "19.2.1"
