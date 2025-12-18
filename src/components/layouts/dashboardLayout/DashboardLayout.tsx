@@ -100,20 +100,13 @@ export const DashboardLayout = ({ children }: DashboardLayoutProps) => {
       return (
         <Box key={item.text}>
           <ListItem disablePadding>
-            <ListItemButton
-              onClick={() => handleCollapsibleClick(item.text)}
-              sx={{ pl: 2 + depth * 2 }}
-            >
+            <ListItemButton onClick={() => handleCollapsibleClick(item.text)} sx={{ pl: 2 + depth * 2 }}>
               <ListItemIcon>{item.icon}</ListItemIcon>
               <ListItemText primary={item.text} />
               {openCollapsible[item.text] ? <ExpandLess /> : <ExpandMore />}
             </ListItemButton>
           </ListItem>
-          <Collapse
-            in={openCollapsible[item.text]}
-            timeout="auto"
-            unmountOnExit
-          >
+          <Collapse in={openCollapsible[item.text]} timeout="auto" unmountOnExit>
             <List component="div" disablePadding>
               {item.children?.map((child) => renderNavItem(child, depth + 1))}
             </List>
@@ -124,11 +117,7 @@ export const DashboardLayout = ({ children }: DashboardLayoutProps) => {
 
     return (
       <ListItem key={item.text} disablePadding>
-        <ListItemButton
-          component={Link}
-          href={item.href}
-          sx={{ pl: 2 + depth * 2 }}
-        >
+        <ListItemButton component={Link} href={item.href} sx={{ pl: 2 + depth * 2 }}>
           <ListItemIcon>{item.icon}</ListItemIcon>
           <ListItemText primary={item.text} />
         </ListItemButton>
@@ -172,10 +161,7 @@ export const DashboardLayout = ({ children }: DashboardLayoutProps) => {
           </Typography>
         </Toolbar>
       </AppBar>
-      <Box
-        component="nav"
-        sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
-      >
+      <Box component="nav" sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}>
         <Drawer
           variant="temporary"
           open={mobileOpen}

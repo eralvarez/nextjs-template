@@ -7,8 +7,7 @@ export default function AppDashboardPage() {
         Dashboard Overview
       </Typography>
       <Typography variant="body1" color="text.secondary" paragraph>
-        Welcome to your application dashboard. This page is wrapped in the
-        DashboardLayout component.
+        Welcome to your application dashboard. This page is wrapped in the DashboardLayout component.
       </Typography>
 
       <Grid container spacing={3} sx={{ mt: 2 }}>
