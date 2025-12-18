@@ -9,7 +9,17 @@
     "start": "next start",
     "lint": "eslint",
     "format": "prettier --write .",
-    "format:check": "prettier --check ."
+    "format:check": "prettier --check .",
+    "db:generate": "prisma generate --config ./prisma.config.ts",
+    "db:migrate:dev": "prisma migrate dev --config ./prisma.config.ts",
+    "db:migrate:deploy": "prisma migrate deploy --config ./prisma.config.ts",
+    "db:migrate:status": "prisma migrate status --config ./prisma.config.ts",
+    "db:migrate": "prisma migrate deploy --config ./prisma.config.ts",
+    "db:reset": "prisma migrate reset --config ./prisma.config.ts --force",
+    "db:push": "prisma db push --config ./prisma.config.ts",
+    "db:pull": "prisma db pull --config ./prisma.config.ts",
+    "db:seed": "prisma db seed",
+    "db:studio": "prisma studio --config ./prisma.config.ts"
   },
   "dependencies": {
     "@emotion/cache": "^11.14.0",
@@ -18,12 +28,16 @@
     "@mui/icons-material": "^7.3.6",
     "@mui/material": "^7.3.6",
     "@mui/material-nextjs": "^7.3.6",
+    "@prisma/adapter-better-sqlite3": "^7.2.0",
+    "@prisma/client": "^7.2.0",
+    "dotenv": "^17.2.3",
     "next": "16.0.10",
     "react": "19.2.1",
     "react-dom": "19.2.1"
   },
   "devDependencies": {
-    "@types/node": "^20",
+    "@types/better-sqlite3": "^7.6.13",
+    "@types/node": "^20.19.27",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
@@ -31,6 +45,7 @@
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-prettier": "^5.5.4",
     "prettier": "^3.7.4",
+    "prisma": "^7.2.0",
     "typescript": "^5"
   }
 }
