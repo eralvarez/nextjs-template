@@ -3,12 +3,16 @@
 import { Box, Button, Container, TextField, Typography, Paper, Link as MuiLink } from '@mui/material';
 import Link from 'next/link';
 import { FormEvent, useState } from 'react';
+import { useRouter } from 'next/navigation';
+
+import { authClient } from 'lib/auth-client';
 
 export default function SignUpPage() {
-  const [fullName, setFullName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
+  const router = useRouter();
+  const [fullName, setFullName] = useState('Erick Alvarez');
+  const [email, setEmail] = useState('erick@test.com');
+  const [password, setPassword] = useState('password');
+  const [confirmPassword, setConfirmPassword] = useState('password');
   const [errors, setErrors] = useState({
     fullName: '',
     email: '',
@@ -16,7 +20,7 @@ export default function SignUpPage() {
     confirmPassword: '',
   });
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     // Reset errors
@@ -71,7 +75,16 @@ export default function SignUpPage() {
     }
 
     // Handle sign up logic here (frontend only)
-    console.log('Sign up with:', { fullName, email, password });
+    // console.log('Sign up with:', { fullName, email, password });
+
+    await authClient.signUp.email(
+      { name: fullName, email, password },
+      {
+        onSuccess: () => {
+          router.push('/app');
+        },
+      }
+    );
   };
 
   return (
