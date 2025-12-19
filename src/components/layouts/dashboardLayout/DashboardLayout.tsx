@@ -1,4 +1,5 @@
 'use client';
+
 import { useState } from 'react';
 import {
   Box,
@@ -17,7 +18,6 @@ import {
   Menu,
   MenuItem,
   Avatar,
-  ListItemAvatar,
 } from '@mui/material';
 import {
   Menu as MenuIcon,
@@ -194,17 +194,19 @@ export const DashboardLayout = ({ children }: DashboardLayoutProps) => {
           <Typography variant="h6" noWrap component="div" sx={{ flexGrow: 1 }}>
             Dashboard Header
           </Typography>
-          <IconButton
-            size="large"
-            edge="end"
-            aria-label="account of current user"
-            aria-controls="user-menu"
-            aria-haspopup="true"
-            onClick={handleUserMenuOpen}
-            color="inherit"
-          >
-            <AccountCircle />
-          </IconButton>
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+            <Typography
+              variant="body1"
+              sx={{
+                display: { xs: 'none', sm: 'block' },
+              }}
+            >
+              {mockUser.name}
+            </Typography>
+            <IconButton size="large" edge="end" onClick={handleUserMenuOpen} color="inherit">
+              <AccountCircle />
+            </IconButton>
+          </Box>
           <Menu
             id="user-menu"
             anchorEl={anchorEl}
