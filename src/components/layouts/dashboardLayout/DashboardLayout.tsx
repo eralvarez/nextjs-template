@@ -14,6 +14,10 @@ import {
   Collapse,
   IconButton,
   Divider,
+  Menu,
+  MenuItem,
+  Avatar,
+  ListItemAvatar,
 } from '@mui/material';
 import {
   Menu as MenuIcon,
@@ -25,6 +29,8 @@ import {
   Folder as FolderIcon,
   Description as DescriptionIcon,
   Image as ImageIcon,
+  AccountCircle,
+  Logout as LogoutIcon,
 } from '@mui/icons-material';
 import Link from 'next/link';
 
@@ -81,9 +87,38 @@ export const DashboardLayout = ({ children }: DashboardLayoutProps) => {
   const [openCollapsible, setOpenCollapsible] = useState<{
     [key: string]: boolean;
   }>({});
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+
+  // Mock user data
+  const mockUser = {
+    name: 'John Doe',
+    email: 'john.doe@example.com',
+    company: 'Acme Corporation',
+    avatar: 'JD',
+  };
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
+  };
+
+  const handleUserMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleUserMenuClose = () => {
+    setAnchorEl(null);
+  };
+
+  const handleSignOut = () => {
+    handleUserMenuClose();
+    // Sign out logic will go here
+    console.log('Sign out clicked');
+  };
+
+  const handleGoToSettings = () => {
+    handleUserMenuClose();
+    // Navigate to settings
+    console.log('Go to settings clicked');
   };
 
   const handleCollapsibleClick = (text: string) => {
@@ -156,9 +191,69 @@ export const DashboardLayout = ({ children }: DashboardLayoutProps) => {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap component="div">
+          <Typography variant="h6" noWrap component="div" sx={{ flexGrow: 1 }}>
             Dashboard Header
           </Typography>
+          <IconButton
+            size="large"
+            edge="end"
+            aria-label="account of current user"
+            aria-controls="user-menu"
+            aria-haspopup="true"
+            onClick={handleUserMenuOpen}
+            color="inherit"
+          >
+            <AccountCircle />
+          </IconButton>
+          <Menu
+            id="user-menu"
+            anchorEl={anchorEl}
+            open={Boolean(anchorEl)}
+            onClose={handleUserMenuClose}
+            anchorOrigin={{
+              vertical: 'bottom',
+              horizontal: 'right',
+            }}
+            transformOrigin={{
+              vertical: 'top',
+              horizontal: 'right',
+            }}
+            PaperProps={{
+              sx: { minWidth: 250 },
+            }}
+          >
+            <Box sx={{ px: 2, py: 1.5 }}>
+              <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: 1 }}>
+                <Avatar sx={{ bgcolor: 'primary.main' }}>{mockUser.avatar}</Avatar>
+                <Box>
+                  <Typography variant="subtitle1" sx={{ fontWeight: 600 }}>
+                    {mockUser.name}
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    {mockUser.email}
+                  </Typography>
+                  <Typography variant="caption" color="text.secondary">
+                    {mockUser.company}
+                  </Typography>
+                </Box>
+              </Box>
+            </Box>
+            <Divider />
+            <Box sx={{ mt: 1 }}>
+              <MenuItem onClick={handleGoToSettings}>
+                <ListItemIcon>
+                  <SettingsIcon fontSize="small" />
+                </ListItemIcon>
+                <ListItemText>Settings</ListItemText>
+              </MenuItem>
+              <MenuItem onClick={handleSignOut}>
+                <ListItemIcon>
+                  <LogoutIcon fontSize="small" />
+                </ListItemIcon>
+                <ListItemText>Sign Out</ListItemText>
+              </MenuItem>
+            </Box>
+          </Menu>
         </Toolbar>
       </AppBar>
       <Box component="nav" sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}>
