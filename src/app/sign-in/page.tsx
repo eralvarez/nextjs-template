@@ -3,13 +3,17 @@
 import { Box, Button, Container, TextField, Typography, Paper, Link as MuiLink } from '@mui/material';
 import Link from 'next/link';
 import { FormEvent, useState } from 'react';
+import { useRouter } from 'next/navigation';
+
+import { authClient } from 'lib/auth-client';
 
 export default function SignInPage() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const router = useRouter();
+  const [email, setEmail] = useState('erick@test.com');
+  const [password, setPassword] = useState('password');
   const [errors, setErrors] = useState({ email: '', password: '' });
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     // Reset errors
@@ -39,6 +43,17 @@ export default function SignInPage() {
 
     // Handle sign in logic here (frontend only)
     console.log('Sign in with:', { email, password });
+
+    await authClient.signIn.email(
+      { email, password },
+      {
+        onSuccess: () => {
+          // Redirect or show success message
+          console.log('Sign in successful');
+          router.replace('/company-selector');
+        },
+      }
+    );
   };
 
   return (

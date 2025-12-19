@@ -81,7 +81,7 @@ export default function SignUpPage() {
       { name: fullName, email, password },
       {
         onSuccess: () => {
-          router.push('/app');
+          router.push('/company-selector');
         },
       }
     );

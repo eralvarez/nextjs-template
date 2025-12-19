@@ -10,6 +10,12 @@ datasource db {
   provider = "sqlite"
 }
 
+enum MemberRole {
+  SUPERUSER
+  ADMIN
+  EMPLOYEE
+}
+
 model Post {
   id      String  @id @default(uuid())
   title   String
@@ -26,6 +32,7 @@ model User {
   updatedAt     DateTime  @updatedAt
   sessions      Session[]
   accounts      Account[]
+  members       Member[]
 
   @@unique([email])
   @@map("user")
@@ -77,4 +84,30 @@ model Verification {
 
   @@index([identifier])
   @@map("verification")
+}
+
+model Company {
+  id        String    @id @default(uuid())
+  name      String
+  createdAt DateTime? @default(now())
+  updatedAt DateTime? @updatedAt
+  members   Member[]
+
+  @@map("company")
+}
+
+model Member {
+  id        String     @id @default(uuid())
+  role      MemberRole @default(EMPLOYEE)
+  userId    String
+  user      User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  companyId String
+  company   Company    @relation(fields: [companyId], references: [id], onDelete: Cascade)
+  createdAt DateTime?  @default(now())
+  updatedAt DateTime?  @updatedAt
+
+  @@unique([userId, companyId])
+  @@index([userId])
+  @@index([companyId])
+  @@map("member")
 }

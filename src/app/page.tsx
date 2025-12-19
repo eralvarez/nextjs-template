@@ -1,11 +1,13 @@
-import { Typography } from '@mui/material';
+import { redirect } from 'next/navigation';
+import { headers } from 'next/headers';
 
-export default function HomePage() {
-  return (
-    <div>
-      <main>
-        <Typography>Welcome to Next.js!</Typography>
-      </main>
-    </div>
-  );
+import { auth } from 'lib/auth';
+
+export default async function HomePage() {
+  const sessionResponse = await auth.api.getSession({ headers: await headers() });
+  if (sessionResponse) {
+    redirect('/company-selector');
+  } else {
+    redirect('/sign-in');
+  }
 }
